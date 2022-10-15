@@ -1,0 +1,12 @@
+formatting
+    The first page should list the title of the project, the author, the date of submission and a statement that it is being submitted as partial fulfilment of the requirements of Physics 437A or 437B
+
+    A Table of Contents, a List of Tables (if any) and a List of Figures (if any) should be included.
+        
+    Note: the pages with items 3–5 (title page, summary page, table of contents, and lists of tables/figures) should be numbered as pages (i), (ii), (iii), etc. The items 6 below (body of the report) should begin with regular page numbers 1, 2, 3, etc.
+
+git
+    https://team.inria.fr/robotlearn/private/organising-papers-software/how-to-archive-your-latex-source-files-from-overleaf-to-gitlab-inria-fr/
+
+list of symbols
+    https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis

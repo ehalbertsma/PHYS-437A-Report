@@ -1,0 +1,19 @@
+
+
+
+background
+    lagrangian mechanics
+        holonomic constraints
+        symmetry
+        noether's theorem
+        dynamical reduction
+    control theory
+        degrees of freedom, actuation
+        virtual holonomic contrainst
+
+
+
+methodology
+    high level explanation of process
+    examples of systems
+    simulation process

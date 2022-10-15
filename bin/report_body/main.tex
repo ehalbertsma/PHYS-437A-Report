@@ -1,0 +1,54 @@
+\documentclass{report}
+
+% All package imports live in the ._styles file
+\usepackage{bin/._styles}
+\usepackage{bin/._environments}
+% All custom math commands live in the ._math file
+\usepackage{bin/._math}
+
+\begin{document}
+\noindent
+% Insert the title page here
+\include{bin/._titlepage}
+\pagenumbering{roman}
+
+% Displays a list of \todo comments
+%remove this before submission
+%\listoftodos
+
+% Table of contents
+%\setcounter{tocdepth}{1}
+\include{bin/report_body/1_abstract}\pagebreak
+\tableofcontents
+%\listoftables
+%\lstlistoflistings
+
+\pagebreak
+\pagenumbering{arabic}
+% PARAGRAPH OPTIONS
+\setlength{\parindent}{0em}
+\setlength{\parskip}{.5em}
+
+% Import the files
+\subfile{bin/report_body/2_intro}\pagebreak
+\subfile{bin/report_body/3_background}\pagebreak
+\subfile{bin/report_body/4_methodology}\pagebreak
+\subfile{bin/report_body/5_discussion}\pagebreak
+\subfile{bin/report_body/6_conclusion}\pagebreak
+\subfile{bin/report_body/7_acknowledgements}\pagebreak
+
+
+% Bibliography
+\listoffigures
+\listoftables
+%\list of equations
+%\list of code snippets
+\nocite{*} % print entire bibliography
+\bibliographystyle{ieeetr}
+\bibliography{bin/ref}
+
+% changelog
+%\subfile{bin/notes/changelog}
+
+
+\end{document}

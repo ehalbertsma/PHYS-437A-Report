@@ -1,0 +1,192 @@
+\ProvidesPackage{._styles}
+% All package imports and styling settings live in the ._styles file
+
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bigints}
+\usepackage{subfiles}
+\usepackage{lipsum}
+\usepackage{kantlipsum}
+\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage{booktabs}
+\usepackage[explicit]{titlesec}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{transparent}
+\usepackage{watermark}
+\usepackage{tcolorbox}
+\usepackage{bm}
+\usepackage{esint}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage{commath}
+\usepackage{physics}
+\usepackage[font=footnotesize,labelfont=bf,margin=25pt]{caption} % changes settings for caption
+
+% this is supposed to bring fix citations in subfiles
+\makeatletter
+\newrobustcmd*{\nobibliography}{%
+  \@ifnextchar[%]
+    {\blx@nobibliography}
+    {\blx@nobibliography[]}}
+\def\blx@nobibliography[#1]{}
+\appto{\skip@preamble}{\let\printbibliography\nobibliography}
+\makeatother
+
+% uncomment this for the draft watermark
+%\usepackage{draftwatermark}
+%\SetWatermarkColor[gray]{0.93}
+
+
+% Font
+\usepackage{tgtermes}
+% Alternate font
+%\usepackage{fouriernc}
+
+% Table of contents
+\usepackage[nottoc]{tocbibind} %to get bib, lot, lof, but not toc in ToC
+
+% Page setup
+\geometry{
+letterpaper,
+right=1in,bottom=1in,left=1in,top=1in,
+}
+ 
+ % headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+%\lhead{\includegraphics[height=10pt]{1Overview/Images/WL.png}}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\footrulewidth}{0.8pt}
+\renewcommand{\chaptermark}[1]{%
+ \markboth{\thechapter.\ #1}{}}
+\rhead{\leftmark}
+\lhead{PHYS 437}
+\chead{\includegraphics[width=2em]{assets/uw.png}}
+\cfoot{\thepage}
+
+% Comments
+\definecolor{blue}{RGB}{135, 197, 255}
+
+% HYPERLINKS
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!50!black}
+}
+
+% PACKAGE FOR VARIABLE NAMES
+%\usepackage{Templates/global_variables}
+
+% CHAPTER HEADERS
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+\def\@makechapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ 
+    {\raggedleft \reset@font
+      \scshape \@chapapp{} \thechapter\par\nobreak}%
+    \par\nobreak
+    \vspace*{10\p@}
+    \interlinepenalty\@M
+    {\raggedright \Huge \bfseries #1}%
+    \par\nobreak
+    \hrulefill
+    \par\nobreak
+    \vskip 15\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ 
+    {\raggedleft \reset@font
+      \scshape \vphantom{\@chapapp{} \thechapter}\par\nobreak}%
+    \par\nobreak
+    \vspace*{10\p@}
+    \interlinepenalty\@M
+    {\raggedright \Huge \bfseries #1}%
+    \par\nobreak
+    \hrulefill
+    \par\nobreak
+    \vskip 10\p@
+  }}
+% CHAPTER AUTHORS
+%\makeatletter
+%\newcommand{\chapterauthor}[1]{%
+%  {\parindent0pt\vspace*{-25pt}%
+%  \linespread{1.1}\large\scshape#1%
+%  \par\nobreak\vspace*{35pt}}
+%  \@afterheading%
+%}
+%\makeatother
+
+% SECTION HEADERS
+
+% TODO
+% Graphics Path, couldn't get it to work rip
+%\newcommand*{\resetfigpath}[1]{
+%    \graphicspath{{../#1}}
+%}
+
+% Todo width formatting
+\setlength{\marginparwidth}{2.2cm}
+% this forces todonotes to use marginnote to make it compatible with a 2-column environment
+\usepackage{marginnote} 
+\let\marginpar\marginnote
+
+% typesetting code options using the Listings package
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{white!95!black},   
+    commentstyle=\color{blue},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{purple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=2pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=1
+}
+
+\lstset{style=mystyle}
+
+% I don't remember what this is!
+%\setlist[itemize]{noitemsep}
+% ---------------------------------------------
+%\titleformat{\chapter}[display]
+%  {\bfseries\Large}
+%  {\filright\MakeUppercase{\chaptertitlename}\Huge\thechapter}
+%  {}
+%  {1ex}
+%  {\titlerule\vspace{1ex}\filcenter #1}
+%  [\vspace{1ex}\titlerule]
+
+
+\newcommand{\revno}{0.2}
+
+%\setlength{\tabcolsep}{5pt}
+%\renewcommand{\arraystretch}{1.1}
+
+\setlength\parindent{0pt}
+\setlength\parskip{1em}
+
+\author{Emrys Halbertsma}
+
+

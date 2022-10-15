@@ -1,0 +1,28 @@
+\ProvidesPackage{._environments}
+
+
+
+
+% work in progress, need to format into environemtn
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+
+%--- definitions ------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newenvironment{boxdef}[1]
+{\begin{tcolorbox}[breakable,sharp corners,colback=black!3!white,colframe=black!15!white]
+\begin{definition}[#1]
+}
+{\end{definition}
+\end{tcolorbox}}
+
+%--- theorems ------------
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newenvironment{boxthm}[1]
+{\begin{tcolorbox}[breakable,sharp corners,colback=black!3!white,colframe=black!15!white]
+\begin{theorem}[#1]
+}
+{\end{theorem}
+\end{tcolorbox}}
