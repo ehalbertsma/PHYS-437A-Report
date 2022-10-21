@@ -15,5 +15,8 @@ background
 
 methodology
     high level explanation of process
+    mccarthy's method of dynamical reduction
     examples of systems
     simulation process
+        software architecture and design
+            

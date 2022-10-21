@@ -31,7 +31,7 @@ This is an example of a holonomic constraint, because we are able to define the 
 
 On the other hand, constraining the particle to the \textit{interior} of the sphere would be an example of a \textbf{non-holomic constraint} since the constraint cannot be expressed as a uniformly homogeneous function.
 \begin{align}
-    x^2+y^2+z^2<R^2 \implies h(x,y,z,t):=x^2+y^2+z^2-R^2\neq 0.
+    x^2+y^2+z^2<R^2 \implies h(x,y,z,t):=x^2+y^2+z^2-R^2<0\qq{and therefore}\neq 0.
 \end{align}
 
 
@@ -39,7 +39,7 @@ In this study, we are especially interested in artificially imposing holonomic c
 
 
 \subsection{Symmetry}
-\begin{boxdef}{Symmetry\cite[291]{bullo2019geometric}%
+\begin{boxdef}{Symmetry \cite[291]{bullo2019geometric}%
 }
 Let $\del{Q,\mbbg,P}$ be a smooth simple mechanical system. \begin{enumerate}[i.]
     \item A smooth left action $\Phi$ of a Lie group $G$ on $Q$ is a \textbf{symmetry} of the system if $\Phi$ is an isometry and $P$ is $\Phi$-invariant.
@@ -78,5 +78,21 @@ Let $h:Q\to\ree^4$ be smooth, $\rank \dd h_q=k$ for all $q\in h\inv(0).$ Then $h
 \end{align}
 \end{boxthm}
 
-
+\section{Modelling a Simple Mechanical Control System}\todo[color=blue]{think about what section this fits best into}
+\subsection{General Equation}
+Putting all the pieces together, a generalized differential equation for a simple mechanical control system is given by:
+\begin{align}
+    D\del{\vec q}\vec\qdd+C\del{\vec q,\vec\qd}\vec\qd+\vec\nabla_qP\del{\vec q}=B\vec\tau\label{control-equation}
+\end{align}
+where each variable is defined as follows:\todo{I want to add what type of mathematical object each variable is}
+\begin{itemize}
+    \item $\vec q, \vec \qd, \vec \qdd$ are the generalized coordinates of the system, and the respective first and second time derivatives thereof.
+    \item $D(q)$ (also known as $M(q)$) is the inertia matrix.
+    \item $C{q,\qd}$ is the Coriolis matrix.\todo{explain this more}
+    \item $P\del{\vec q}$ is a scalar function\todo{check this, I think it's a 1-form} whose gradient with respect to the generalized coordinates describes the potential field of the system.
+    \item $B$ is a $\del{\dim \vec q }\cross\del{ \dim \vec\tau}$ matrix, which relates the degrees of freedom of the system to the number of control inputs. For example, if the system is characterized by 4 generalized coordinates and 2 actuators, $B\in M_{4\cross 2}\del{\ree}$.
+    \item $\vec \tau$ (also known as $\vec u$) is the set of control inputs of the system.
+\end{itemize}
+\subsection{Example: Modeling $X$ System}
+In this section, we will demonstrate how Equation \ref{control-equation} applies to a specific example.
 \end{document}

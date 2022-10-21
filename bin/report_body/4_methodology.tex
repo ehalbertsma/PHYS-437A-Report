@@ -3,9 +3,16 @@
 \chapter{Methodology}
 % ------------------------
 % ------------------------
-\section{Simple Mechanical Systems with Symmetries}
-In this section, we discuss a number of examples of systems of interest. These are simple mechanical systems to which we can apply dynamical reduction.
-\subsection{Example: Rolling Disk}\todo{this doesn't actually have a symmetry, just keeping it in as a placeholder}
+\section{Method of Dynamical Reduction}
+McCarthy et al. proposed a Noether-like theorem for dynamical reduction \cite{mccarthy}.
+
+
+\section{Examples of Symmetry-endowed Simple Mechanical Systems}
+In this section, we discuss a number of examples of systems of interest. These are simple mechanical systems to which we can apply dynamical reduction in simulation. The subsequent section describes the simulation methods in detail.
+
+In particular, systems with at least two degrees of underactuation were considered. These lend themselves well to our method of dynamical reduction.
+
+\subsection{Example: Rolling Disk}
 This example is retrieved from \cite[9]{bullo2019geometric}.
 
 \textbf{Description} Consider a round disk whose circular edge is constrained to the surface of a flat plane. The coordinates of the system are $q=\pmqty{x&y&\theta&\phi}^T$, and the system is actuated by $\tau=\pmqty{\tau_\theta&\tau_\phi}^T$.
@@ -24,6 +31,8 @@ Then its Lagrangian is given by
 \begin{align}
     \Lagr(q,\dot q)=\frac{1}{2}m(\dot x^2+\dot y^2)+\frac{1}{2}J_{roll}\dot\theta^2+\frac{1}{2}J_{spin}\dot{\phi}^2.
 \end{align}
+
+\textbf{Symmetry} The system's potential energy is invariant.
 
 \subsection{Example: Robotic Leg} 
 This example is retrieved from \cite[293]{bullo2019geometric}.%
@@ -46,7 +55,6 @@ This example is retrieved from \cite[295]{bullo2019geometric}.%
 \textbf{Lagrangian}
 
 \textbf{Symmetries}
-
 
 
 \end{document}

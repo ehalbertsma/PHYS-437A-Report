@@ -1,0 +1,17 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{Simulation}
+Simulations of the systems described in section \ref{sec:examples} were conducted in Matlab. As mentioned, some previous work had been done by a former student, so this was used as a starting point.
+\subsection{Program Architecture}
+\begin{enumerate}
+    \item The user starts at \verb|main.m|, and enters the name of the system to be simulated. This calls a \verb|.json| file of that name, and feeds it into \verb|import_system.m|.
+    \item \verb|import_system.m| takes the \verb|.json| file as an input, and converts the file (and relevant configuration parameters) into variables readable by Matlab.
+    \item The main script then calls on \verb|system_dynamics.m| to turn the variables into the mechanical system we wish to model. This script makes use of Matlab's Symbolic Toolbox, and derives the differential equations relevant to the system. Finally, the script outputs a set of text files containing matrix expressions of each term of the system. These files are stored in a subfolder with the same name as the system.
+    \item From there, \verb|simulate_system.m| sets up the differential equation that we wish to solve. The script calls on a series of sub-functions to model the system term by term at each timestep of the simulation. 
+    \item Finally, \verb|plot_system.m| outputs visualizations of the system dynamics. These are saved in a subfolder with the same name as the system.
+\end{enumerate}
+
+
+
+
+\end{document}
