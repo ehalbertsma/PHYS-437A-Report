@@ -57,4 +57,24 @@ This example is retrieved from \cite[295]{bullo2019geometric}.%
 \textbf{Symmetries}
 
 
+\section{Controller Design}
+\subsection{Well-Definedness of Controller Enforcing VHC}
+Before implementing a controller, it is important to verify that a VHC is \textit{regular} (Theorem \ref{thm:regularvhc}), as this is a necessary condition for the constrained system to be stabilizable by a controller.
+
+The program checks this using the method given by Maggiore in the proof of the theorem (Proposition 3.2\cite{maggiore2012virtual}).
+\begin{lstlisting}
+function [N, D] = is_well_defined(h, q, M, B)
+    dhq = jacobian(h, q);
+    span_of_kernel = null(dhq); % 3x2
+    V = [span_of_kernel, M \ B]; % 3x3
+    [N, D] = numden(det(V));
+end
+\end{lstlisting}
+If the outputted numerator \verb|N| is zero, the controller is well-defined. \todo{double check this}
+\subsection{Controller Gains}
+Ziegler-Nicholls method?
+
+
+
+
 \end{document}

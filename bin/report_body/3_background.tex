@@ -59,6 +59,7 @@ Let $\del{Q,\mbbg,P}$ be a smooth simple mechanical system, and let $\gamma:I\to
 
 \subsection{Dynamical Reduction}
 \section{Control Theory}
+
         degrees of freedom, actuation
 \subsection{Virtual Holonomic Contraints (revisited)}\label{vhc-section}
 Maggiore and Consolini provide a formal definition for VHCs, as well as an overview of the conditions under which they can be imposed\cite{maggiore2012virtual}.
@@ -76,7 +77,7 @@ Let $h:Q\to\ree^4$ be smooth, $\rank \dd h_q=k$ for all $q\in h\inv(0).$ Then $h
 \begin{align}
      \dim\sbr{Im(D\inv(q)B(q))\cap Ker(\dd h_q)}=n-1-k.
 \end{align}
-\end{boxthm}
+\end{boxthm}\label{thm:regularvhc}
 
 \section{Modelling a Simple Mechanical Control System}\todo[color=blue]{think about what section this fits best into}
 \subsection{General Equation}
@@ -88,11 +89,41 @@ where each variable is defined as follows:\todo{I want to add what type of mathe
 \begin{itemize}
     \item $\vec q, \vec \qd, \vec \qdd$ are the generalized coordinates of the system, and the respective first and second time derivatives thereof.
     \item $D(q)$ (also known as $M(q)$) is the inertia matrix.
-    \item $C{q,\qd}$ is the Coriolis matrix.\todo{explain this more}
+    \item $C\del{q,\qd}$ is the Coriolis matrix.\todo{explain this more}
     \item $P\del{\vec q}$ is a scalar function\todo{check this, I think it's a 1-form} whose gradient with respect to the generalized coordinates describes the potential field of the system.
     \item $B$ is a $\del{\dim \vec q }\cross\del{ \dim \vec\tau}$ matrix, which relates the degrees of freedom of the system to the number of control inputs. For example, if the system is characterized by 4 generalized coordinates and 2 actuators, $B\in M_{4\cross 2}\del{\ree}$.
     \item $\vec \tau$ (also known as $\vec u$) is the set of control inputs of the system.
 \end{itemize}
+Constraints are expressed as a vector function, $\vec{h}(\vec q)$,
+    \begin{align}
+        \vec{h}(\vec q)&=\pmqty{h_1(\vec q)\\h_2(\vec q)\\\vdots}\equiv \vec 0
+    \end{align}
+    Since the goal is to drive the holonomic constraints to zero through control, it makes sense to define the Error as the contraint $\vec e(\vec q):=\vec h(\vec q)$. With this, we get:\todo[color=blue]{multi col format}
+    \begin{align}
+        \vec{e}&=\vec h(\vec q);\\
+    \dot{\vec{e}}&=\dv{}{t}\vec h(\vec q)\\&=\dd \vec{h}(\vec{q})\dot{\vec{q}};\\
+    \ddot{\vec{e}}&=\dv{}{t}\del{\dd {\vec{h}(\vec{q})}\dot{\vec{q}}}\\
+    &=\dot{\vec{q}}^\top\del{\pdv{}{\vec q}\grad_q{\vec{h}(\vec{q})}}\dot{\vec{q}}+\dd {\vec{h}(\vec{q})}\ddot{\vec{q}}.\label{eq:edd}
+    \end{align}
+    Where we define $\dd$ as the Jacobian operator, whose $ij$\textsuperscript{th} matrix element is:
+    \begin{align}
+        \sbr{\dd \vec f}_{ij}=\pdv{}{q_j}\del{\vec f\cdot\hat{e}_i}
+    \end{align}
+    By isolating for $\ddot{\vec q}$ in Equation \ref{eq:edd}, we can set $\ddot{\vec{e}}$ as a function of our control, $\vec\tau$. Then, we can choose the control, $\vec\tau$, so that it causes $\ddot{\vec{e}}\to \vec{0}$. Starting from Equation \ref{control-equation},
+    \begin{align}
+        \ddot{\vec{q}}=D\inv(\vec{q})\del{B\vec{\tau}
+        -C\del[1]{\vec q,\vec\qd}\vec\qd-\vec\nabla_qP\del{\vec q}}.\label{eq:qdd}
+    \end{align}
+    Substitute Equation \ref{eq:qdd} into Equation \ref{eq:edd}), and assuming that $\ddot{\vec{e}}$ is driven to zero, we can isolate for $\vec{\tau}$ to obtain the \textbf{Control law}:
+    \begin{align}
+        \vec{\tau}=
+        
+    \end{align}
 \subsection{Example: Modeling $X$ System}
 In this section, we will demonstrate how Equation \ref{control-equation} applies to a specific example.
+\begin{enumerate}[(1)]
+    \item A system is chosen, along with a suitable coordinate system such that the system is endowed with symmetries in the coordinates.
+    \item ...
+    \item 
+\end{enumerate}
 \end{document}
