@@ -1,0 +1,82 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{Simulation}
+\subsection{Overview}
+Matlab was chosen for its extensive documentation, and for its popularity in industrial control systems design. This project made use of Matlabs's Symbolic Toolbox and Control System Toolbox.
+
+Simulations of the systems described in Section \ref{sec:examples} were conducted in Matlab. As mentioned, some previous work had been done by a former student, so this was used as a starting point. In particular, the computation of Christoffel symbols and parametrized constraint dynamics methods are built on this previous work. 
+
+The program accepts a configuration file for a simple mechanical system definition, its coordinate relationships, and a set of VHCs. The system dynamics are then computed and modeled, and then simulated over a time interval. 
+
+\subsection{Program Architecture}
+% \begin{lstlisting}
+% | constrained`_system_dynamics.m
+% ├── data
+% │   ├── robot_arm_lewis
+% │   │   ├── C_function.m
+% │   │   ├── D_function.m
+% │   │   ├── G_function.m
+% │   │   ├── dhq_function.m
+% │   │   ├── dhqdt_function.m
+% │   │   ├── h_function.m
+% │   │   └── plots
+% │   ├── robot_arm_offset
+% │   │   ├── Ac_function.m
+% │   │   ├── C_function.m
+% │   │   ├── D_function.m
+% │   │   ├── G_function.m
+% │   │   ├── bc_function.m
+% │   │   ├── dhq_function.m
+% │   │   ├── dhqdt_function.m
+% │   │   ├── h_function.m
+% │   │   └── plots
+% │   └── spherical_pendulum_mccarthy
+% │       ├── C_function.m
+% │       ├── D_function.m
+% │       ├── G_function.m
+% │       ├── dhq_function.m
+% │       ├── dhqdt_function.m
+% │       ├── h_function.m
+% │       └── plots
+% ├── example-systems
+% │   ├── robot_arm_lewis.m
+% │   ├── robot_arm_offset.m
+% │   └── spherical_pendulum_mccarthy.m
+% ├── generate_template.m
+% ├── main.m
+% ├── new_system_template.m
+% ├── plot_sandbox.m
+% ├── plot_system.m
+% ├── simulate_system.m
+% ├── system_differential_equation.m
+% └── system_dynamics.m
+% \end{lstlisting}
+\todo{include a diagram of program architecture}
+\todo{update this with constraint dynamics}
+\begin{enumerate}
+    \item The user starts at \verb|new_system_template.m|. 
+    When prompted, the user enters the system name, and a new directory and configuration file are generated.
+    \item Next, the user navigates to the new configuration file to enter the system parameters.
+    \item The system can then be imported using \verb|system_dynamics.m|, which converts the configured parameters into a model of the mechanical system. The relevant Lagrangian, inertia, coriolis, and actuator functions are saved in the system's subdirectory.
+    This script makes use of Matlab's Symbolic Toolbox. 
+    \item From there, \verb|simulate_system.m| sets up the differential equation that we wish to solve. The script calls on a series of sub-functions to model the system term by term at each timestep of the simulation. 
+    \item Finally, \verb|plot_system.m| outputs visualizations of the system dynamics. These are saved in a subfolder with the same name as the system.
+\end{enumerate}
+
+
+\subsection{Simulating a Smooth Simple Control System}
+The program uses Matlab's \verb|ode45| solver, an implementation of the Range-Kutta algorithm with varying time steps\cite{senan2007brief}.
+
+The solver iterates through a specified interval and timestep to solve Equation \ref{control-equation} corresponding to the instantaneous $D(q),C(\qd,q),P(q),$and $B$ matrices. The system's behaviour is then corrected using the control signal $\tau$ to drive the system towards the constraint set defined by the VHCs.
+
+Other required parameters include:
+\begin{enumerate}[(a)]
+    \item PD controller constants $K_P,K_D$,
+    \item Numerical values for segment lengths, masses, $B$-matrix, and gravitational constant
+    \item A vector \verb|q0| of initial positions and velocities of the coordinates.
+\end{enumerate}
+
+The program outputs and saves a series of plots visualizing the system's behaviour.
+\subsection{Version Control}
+The project is stored on Dr. Nielsen's Gitlab instance. A new branch titled \verb|fall2022-dev| contains the newly developed code.
+\end{document}

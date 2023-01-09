@@ -1,25 +1,37 @@
 \documentclass{report}
 
-% All package imports live in the ._styles file
+% All package imports and formatting parameters live in the ._styles file
 \usepackage{bin/._styles}
+% All custom environments live in the ._environments file
 \usepackage{bin/._environments}
 % All custom math commands live in the ._math file
 \usepackage{bin/._math}
 
+\hypersetup{
+pdftitle={PHYS 437 - Dynamical Reduction and VHCs},
+pdfsubject={Examples of Dynamical Reduction Using Symmetry for Simple Mechanical Systems with Virtual Holonomic Constraints},
+pdfauthor={Emrys Halbertsma},
+pdfkeywords={VHC, Lagrangian, Geometric control, symmetry}
+}
+
 \begin{document}
 \noindent
+% Displays a list of \todo comments
+%remove this before submission
+% \listoftodos
+
 % Insert the title page here
 \include{bin/._titlepage}
 \pagenumbering{roman}
+%------------
 
-% Displays a list of \todo comments
-%remove this before submission
-%\listoftodos
+%------------
 
 % Table of contents
 %\setcounter{tocdepth}{1}
-\include{bin/report_body/1_abstract}\pagebreak
+\include{bin/report_body/0_abstract}
 \tableofcontents
+\listoffigures
 %\listoftables
 %\lstlistoflistings
 
@@ -30,18 +42,25 @@
 \setlength{\parskip}{.5em}
 
 % Import the files
-\subfile{bin/report_body/2_intro}\pagebreak
-\subfile{bin/report_body/3_background}\pagebreak
-\subfile{bin/report_body/4_methodology}%pagebreak
-\subfile{bin/report_body/4_simulation}\pagebreak
+\subfile{bin/report_body/1_intro}\pagebreak
+\subfile{bin/report_body/2_background}\pagebreak
+%------
+\subfile{bin/report_body/3_methodology}
+\subfile{bin/report_body/3_simulation}\pagebreak
+%------
+\chapter{Results}
+    \subfile{bin/report_body/4_robotic_arm_offset}
+    \subfile{bin/report_body/4_spherical_pendulum}
+%------
 \subfile{bin/report_body/5_discussion}\pagebreak
+%------
 \subfile{bin/report_body/6_conclusion}\pagebreak
 \subfile{bin/report_body/7_acknowledgements}\pagebreak
 
 
 % Bibliography
-\listoffigures
-\listoftables
+% \listoffigures
+% \listoftables
 %\list of equations
 %\list of code snippets
 \nocite{*} % print entire bibliography

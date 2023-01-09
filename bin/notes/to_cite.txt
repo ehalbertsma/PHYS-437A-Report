@@ -1,1 +1,4 @@
 - cite the mccarthy paper properly
+
+
+https://underactuated.csail.mit.edu/intro.html#section1

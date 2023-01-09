@@ -7,16 +7,9 @@
 
 
 
-\newcommand{\notm}{$\mathrm{NO_3^-}$}
-\newcommand{\nottm}{$\mathrm{NO_2^-}$}
-\newcommand{\votmax}{$\mathrm{VO}_\textsc{2 max}$}
-\newcommand{\vot}{$\mathrm{VO_2}$}
-\newcommand{\vcot}{$\mathrm{VCO_2}$}
-\newcommand{\smo}{$\mathrm{SmO}_2$}
-\newcommand{\tex}{$\mathrm{T_{EX}}$}
+\newcommand{\tss}[1]{\textsuperscript{#1}}
 
 
-\newcommand{\cn}{\todo[color=blue]{Citation Needed} }
 
 \newcommand{\Lagr}{\mathcal{L}}
 \newcommand{\qd}{\dot q}
@@ -27,3 +20,17 @@
 \newcommand{\ree}{\mathbb{R}}
 
 \newcommand{\inv}{^{-1}}
+
+\newcommand{\dhq}{\dd h_q}
+\newcommand{\Ker}[1]{\mathrm{Ker}\del{#1}}
+\newcommand{\Span}[1]{\mathrm{Span}\del{#1}}
+\newcommand{\Gammac}[2]{\overset{\tiny\mathcal{C}}{\Gamma}\vphantom{\Gamma}^{#1}_{#2}}
+\newcommand{\nablac}{\overset{\tiny\mathcal{C}}{\nabla}\vphantom{\nabla}}
+
+
+
+% todonotes options
+\newcommand{\cn}{\todo[color=red]{Citation Needed} }
+\newcommand{\askchris}[1][]{\todo[color=green!40]{Confirm w Chris #1}}
+\newcommand{\todoformat}[1][formatting]{\todo[color=blue]{#1}} % this is  to be used as an option of a todo: \todo[\fmt]{ blah blah blah } 
+\newcommand{\todofactcheck}[1]{\todo[color=yellow]{#1}} % this is  to be used as an option of a todo: \todo[\fmt]{ blah blah blah } 

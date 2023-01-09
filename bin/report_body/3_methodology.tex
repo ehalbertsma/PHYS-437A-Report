@@ -1,0 +1,221 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\chapter{Methodology}
+% ------------------------
+\section{Method of Dynamical Reduction}
+% ------------------------
+McCarthy et al. presents a Noether-like theorem for dynamical reduction\cite{mccarthy}. The simplified steps for the reduction are outlined as follows, based on the work of McCarthy and Nielsen\cite{nielsen-note}.
+\subsection{Parametrization of the Constraint Set}
+First, define a parametric function $\Phi$, that parametrizes the $n$-dimensional surface $\mathcal{C}$ defined by the chosen VHCs. 
+\begin{align}
+&\Phi:X\to\mathcal{C}\\
+    &\Phi:(s^1,s^2,\ldots,s^n)\in X \mapsto q\in\mathcal{C},
+\end{align}
+so that the tangent space of the constraint manifold is equal to the image of the Jacobian of the parametrization:
+\begin{align}
+T_{q=\Phi(s)}\mathcal{C}=Im(\dd\Phi_s).
+\end{align}
+A system with $n$ degrees of underactuation requires the same number of parameters.
+%---------------------------
+\subsection{Computing the Constrained Dynamics}
+%---------------------------
+Next, revisit the general expression for the unconstrained system dynamics (Equation \ref{control-equation}) to compute the constrained dynamics. 
+The dynamics for each given point $q\in\mathcal{C}$ can be parametrized with the corresponding initial conditions,
+\begin{align}
+x_0=\pmqty{q\\\qd\\\qdd}=\pmqty{
+\Phi(s)\\
+\dd\Phi_s\dot{s}\\
+\dot{s}\pdv{}{s}\Phi_s\dot{s}+\dd\Phi_s\ddot{s}
+}.
+\end{align}
+Equation \ref{eq:s-control-eq} is converted purely in terms of $s$-coordinates, which are generally easier to work with than coordinates of a manifold.
+Use the left annihilator $B^\bot$ to obtain a homogeneous expression on the right hand side:
+\begin{align}
+B^\bot\del{
+D(q)\qdd+C(q,\qd)\qd+\nabla_q P
+}
+\bigg|_{x_0}
+&=B^\bot B\tau \,
+\bigg|_{x_0}\label{eq:s-control-eq}\\
+\del{B^\bot D(q)\qdd+ B^\bot C(q,\qd)\qd+ B^\bot\nabla_q P}\bigg|_{x_0}
+&=0.
+\end{align}
+After performing the algebraic steps to solve for $\ddot s$, we have $n$ second-order ODEs describing the constrained dynamics, giving $2n$ degrees of freedom. 
+\begin{align}
+\begin{aligned}
+\ddot s^1 &=f_1(\dot s^1,\ldots, \dot s^n, s^1,\ldots, s^n), \\ 
+\ddot s^2 &=f_2(\dot s^1,\ldots, \dot s^n, s^1,\ldots, s^n),\\
+&\vdots\phantom{={}}\\
+\ddot s^n &=f_n(\dot s^1,\ldots, \dot s^n, s^1,\ldots, s^n).
+\end{aligned}\label{eq:constr-dyn}
+\end{align}
+Note, however, that this project particularly focuses on second-degree ($n=2$) underactuated systems, so the constrained dynamics tend to have only 4 degrees of freedom.
+
+\textbf{Alternative approach:} There is also a coordinate-free approach to computing the constrained dynamics using Christoffel Symbols. The Christoffel Symbols of the Constrained dynamics are given by Equation \ref{eq:christoffelconstrained}. 
+The computed values are in fact equivalent to Equation \ref{eq:constr-dyn} above\cite{nielsen-note}. 
+For a system with $n$ degrees of underactuation:
+\begin{align}
+\ddot s^k &= -\sum_{i=1}^{n}\sum_{j=1}^{n}\Gammac{k}{ij}(s)\dot{s}^i\dot{s}^j-\Vec{e}_k^\top\del{B^\bot D \dd\Phi_s}\inv B^\bot\nabla_q P \bigg|_{q=\Phi(s)}
+\end{align}
+For a system with $2$ degrees of underactuation, the result simplifies to:
+\begin{align}
+\begin{aligned}
+\ddot s^1 &= 
+-\Gammac{1}{11}(s)\dot{s}^1\dot{s}^1
+-\Gammac{1}{12}(s)\dot{s}^1\dot{s}^2
+-\Gammac{1}{21}(s)\dot{s}^2\dot{s}^1
+-\Gammac{1}{22}(s)\dot{s}^2\dot{s}^2
+-\Vec{e}_1^\top\del{B^\bot D \dd\Phi_s}\inv B^\bot\nabla_q P \bigg|_{q=\Phi(s)},\\
+\ddot s^2 &= 
+-\Gammac{2}{11}(s)\dot{s}^1\dot{s}^1
+-\Gammac{2}{12}(s)\dot{s}^1\dot{s}^2
+-\Gammac{2}{21}(s)\dot{s}^2\dot{s}^1
+-\Gammac{2}{22}(s)\dot{s}^2\dot{s}^2
+-\Vec{e}_2^\top\del{B^\bot D \dd\Phi_s}\inv B^\bot\nabla_q P \bigg|_{q=\Phi(s)}.
+\end{aligned}\label{eq:constr-dyn-gammac}
+\end{align}
+
+%---------------------------
+\subsection{Sufficient Conditions for the Dynamical Reduction}
+McCarthy provides sufficient conditions to apply the dynamical reduction technique are given in the article under the Assumption below.
+\begin{boxassumption}{\cite{mccarthy}}
+For a manifold $\mathcal{C}$ of dimension 2, there exists a ``horizontal" sub-bundle $H\mathcal{C}$ of $T\mathcal{C}$, with $\rank H\mathcal{C}=1$, satisfying:
+\begin{enumerate}[(a)]
+    \item $H\mathcal{C}$ is complementary to the vertical sub-bundle $V\mathcal{C}$, so that $T\mathcal{C}=H\mathcal{C}\oplus V\mathcal{C}$
+\item $\nablac_V V \in\Gamma^\infty(H\mathcal{C})$;
+\item For all $X,Y\in \Gamma^\infty(H\mathcal{C})$, $\nablac_X Y \in \Gamma^\infty(H\mathcal{C})$, i.e., $H\mathcal{C}$ is autoparallel.
+\end{enumerate}
+\end{boxassumption}\label{assumption1}
+In essence, we assume it is possible to separate the tangent space of the configuration manifold $\mathcal{C}$ into the direct sum of a so-called ``Vertical Vector Field" and a ``Horizontal Vector Field". This draws similarities to an Ehresmann Connection (Definition \ref{def:ehresmann}).
+
+%--------------------
+\subsection{Assigning a Vertical Vector Field}
+The Vertical component is defined by the direction of the symmetry of the system. The Horizontal component is chosen based on the given virtual holonomic constraints.
+%--------------------
+
+\subsection{Assigning a Horizontal Vector Field}
+choose H based on derivatives of $h$
+check assumptions in assumption 1
+define vertical projection operator $\sigma^V_q$ 
+so that for 
+$X\in T_q\mathcal{C}$
+we define $X$ as the direct sum of the two fields
+$X=\alpha V+\beta H$
+So your projection simply takes the $\alpha$ coefficient.
+Also give the $\sigma$ in terms of the parametrised system, which will have only $2\cross2$ dimensions.
+
+Parallel Transport
+---????
+parallel transporrt the vector across a curve or smt
+
+This Ehresmann style split allows us to parallel transport the vector in the V(or H??) direction along ??? curve.
+
+How does this show that the dynamics are reduced?
+
+Include a statement about how we went from 4 to 2 to (1???) coordinate.
+
+
+
+
+
+\section{Examples of Symmetry-endowed Simple Mechanical Systems}
+In this section, we discuss a number of examples of systems of interest. These are simple mechanical systems to which we can apply dynamical reduction in simulation. The subsequent section describes the simulation methods in detail.
+
+In particular, systems with at least two degrees of underactuation were desired. These second-degree underactuated systems are simple enough to analyze, yet complex enough to demonstrate the value of the described method of dynamical reduction.
+
+\subsection{Example: Rolling Disk}
+This example is retrieved from \cite[9]{bullo2019geometric}.
+
+\textbf{Description} Consider a round disk whose circular edge is constrained to the surface of a flat plane. The coordinates of the system are $q=\pmqty{x&y&\theta&\phi}^T$, and the system is actuated by $\tau=\pmqty{\tau_\theta&\tau_\phi}^T$.
+
+\textbf{Constraints} The disk rolls along the plane with no slip, just like a regular wheel. The no-slip condition can be expressed as a set of holonomic constraints:
+\begin{align}
+    \pmqty{\ddot{x}\\\ddot{y}}-\rho\dot{\phi}\pmqty{\cos\theta\\\sin\theta}=\pmqty{\zmat{2}{1}}
+\end{align}
+
+\textbf{Lagrangian} The disk's potential is constant. Its kinetic energy is defined as,
+\begin{align}
+    KE = \frac{1}{2}\dot q^T \mathbb{G}(q) \dot q, \textrm{ where  }\mathbb{G}(q)=
+\mqty(\dmat[0]{m,m,J_{roll},J_{spin}}).
+\end{align}
+Then its Lagrangian is given by
+\begin{align}
+    \Lagr(q,\dot q)=\frac{1}{2}m(\dot x^2+\dot y^2)+\frac{1}{2}J_{roll}\dot\theta^2+\frac{1}{2}J_{spin}\dot{\phi}^2.
+\end{align}
+
+\textbf{Symmetry} The system's potential energy is invariant.
+
+\subsection{Example: Robotic Leg}\label{sec:robotarm}
+This example is retrieved from \cite[293]{bullo2019geometric}.%293
+
+\textbf{Description} Consider a massive body which rotates around a fixed point in space. A leg extends from the body, which can rotate relative to the body and change its length.
+
+\textbf{Constraints}
+
+\textbf{Lagrangian}
+
+\textbf{Symmetries}
+
+\subsection{Example: Offset Robotic Leg}\label{sec:robotarmoffset} 
+\todo{fix system description, add diagram}
+This example is adapted from \ref{sec:robotarm}  so that the actuated joint is offset from the centre of the block. This results in a coupling of the dynamics of the arm and block. Additionally, the actuator controlling the length of the arm is removed. This gives the system two degrees of underactuation, which yields more interesting dynamics to apply to the dynamical reduction technique.
+
+\textbf{Description} Consider a massive body which rotates around a fixed point in space. A leg extends from the body, which can rotate relative to the body and change its length.
+
+\begin{itemize}
+    \item \textbf{Configuration space} $Q=\ree_{>0}\cross\mathbb{S}^1\cross\mathbb{S}^1$, with coordinates $q=(r,\theta,\psi)$
+    \item \textbf{Kinetic metric} $\mathbb{G}=m(\dd r\otimes\dd r + r^2\dd\theta\otimes\dd\theta)+J\dd\psi\cross\dd\psi$
+    \item \textbf{Actuation} $\tau=\dd \theta$
+    \item \textbf{Potential} $P=0$
+\end{itemize}
+From the diagram of the system, it can be shown that the spatial coordinates are
+\begin{align}
+    \Vec{x}_1&=s\cos\psi\hat{x}+s\sin\psi\hat{y},\\
+    \Vec{x}_2&=\Vec{x_1}+\rho\cos\theta\hat{x}+\rho\sin\theta\hat{y}.
+\end{align}
+The velocities are given by,
+\begin{align}
+    \dot\Vec{x}_1&=-s\dot\psi\sin\psi\hat{x}+s\dot\psi\cos\psi\hat{y},\\
+    \dot\Vec{x}_2&=\dot\Vec{x}_1+(\dot\rho\cos\theta-\rho\sin\theta\cdot\dot\theta)\hat{x}+(\dot\rho\sin\theta+\rho\cos\theta\cdot\dot\theta)\hat{y}.
+\end{align}
+
+\textbf{Lagrangian}
+The system's Lagrangian depends on the kinetic energy of the solid body and of the point mass.
+\begin{align}
+    T=\frac{1}{2}\del{\frac{a^2}{12}m_1+s^2m_2}\dot{\psi}^2+\frac{1}{2}m_2\del{\dot\rho^2+\rho^2\dot\theta^2}+m_2s\del{\dot\rho\dot\psi\sin(\theta-\psi)+\psi\rho\dot\theta\cos(\theta-\psi)}.\label{eq:robarmofflagr}
+\end{align}
+
+\textbf{Symmetries} From Equation \ref{eq:robarmofflagr} we see a symmetry in $\theta-\psi$.
+
+
+\subsection{Example: Spherical Pendulum in Gravity}
+This example is retrieved from \cite[295]{bullo2019geometric}.%
+
+\textbf{Description} A point of mass $m$ is attached to a massless arm of length $\ell$ in a gravitational field with potential $P=-g\hat{s}_3$. The configuration manifold is therefore $Q=\mathbb{S}^2(\ell)$, the kinetic energy metric is $\mbbg=$\todo{example 4.99}.
+
+\textbf{Constraints} The system is constrained to the sphere $\mathbb{S}^2(\ell)$ since the pendulum length is fixed.
+
+\textbf{Lagrangian}
+
+\textbf{Symmetries}
+
+
+\section{Controller Design}
+After selecting a mechanical system, the next step is to design a controller which can stabilize the system to the constraint manifold defined by the VHCs. 
+The standard approach involves setting up a differential equation to model the dynamics of the system, then choosing a feedback control to minimize the error, and tuning the parameters until an optimal (or at least satisfactory) performance is attained\cite{franklin2002feedback}. The control law is already given in Equation \ref{eq:controllaw} for a PD-style controller.
+\subsection{Well-Definedness of Controller Enforcing VHC}
+Before implementing a controller, it is important to verify that a VHC is \textit{regular} (Theorem \ref{thm:regularvhc}), as this is a necessary condition for the constrained system to be stabilizable by a controller.
+
+The program checks this using the method given by Maggiore in the proof of the theorem ( \cite[Prop. 3.2]{maggiore2012virtual}).
+\begin{lstlisting}
+function [N, D] = is_well_defined(h, q, M, B)
+    dhq = jacobian(h, q);
+    span_of_kernel = null(dhq); % 3x2
+    V = [span_of_kernel, M \ B]; % 3x3
+    [N, D] = numden(det(V));
+end
+\end{lstlisting}
+If the outputted numerator \verb|N| is zero, the controller is well-defined.
+\subsection{Controller Gains}
+The controller can be tuned optimally using the \verb|LQR| function in Matlab. However, for the purposes of this project, a satisfactory performance was achieved using simple gains of $K_P=K_D=5.0$. This led to convergence of the virtual holonomic constraints within $\Delta t=10$ for most cases when initial conditions were at least somewhat close to the constraint set $\mathcal{C}$.
+\end{document}

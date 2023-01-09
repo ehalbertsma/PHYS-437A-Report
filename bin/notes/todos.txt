@@ -10,3 +10,16 @@ git
 
 list of symbols
     https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis
+
+adding page numbers/hyperlinks to the bibliography
+
+adding the PDF name, author, meta data
+
+
+
+definitions
+  tangent space
+  vertical and horizontal vector field
+
+theorems
+  parallel transport

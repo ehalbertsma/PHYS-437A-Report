@@ -18,7 +18,7 @@
 \end{tcolorbox}}
 
 %--- theorems ------------
-\theoremstyle{theorem}
+\theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
 \newenvironment{boxthm}[1]
 {\begin{tcolorbox}[breakable,sharp corners,colback=black!3!white,colframe=black!15!white]
@@ -26,3 +26,14 @@
 }
 {\end{theorem}
 \end{tcolorbox}}
+
+%--- assumption ------------
+\theoremstyle{definition}
+\newtheorem*{assumption*}{Assumption}
+\newenvironment{boxassumption}[1]
+{\begin{tcolorbox}[breakable,sharp corners,colback=black!3!white,colframe=black!15!white]
+\begin{assumption*}[#1]
+}
+{\end{assumption*}
+\end{tcolorbox}}
+

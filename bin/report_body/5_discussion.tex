@@ -1,6 +1,18 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
-\chapter{Discussion and Results}
+\chapter{Discussion}
+\section{Summary of Findings}
 
+\section{Sources of Error}
+The Matlab program is susceptible to error under some conditions.
 
+\section{Future Research}
+\subsection{Analyze further examples}
+As discussed in Section \ref{sec:robotarmoffset}, the Robotic Arm Offset example is somewhat trivial, as its reduced form is apparent at all points on the constraint manifold $\mathcal{C}$.
+
+Therefore, future research should explore further examples of mechanical systems, with the aim to provide a more concrete illustration of the technique of dynamical reduction described by McCarthy et al\cite{mccarthy}. 
+Tedrake's notes on Underactuated Robotics\cite{underactuated} contain some examples that (with perhaps some modifications) could be used in a continuation of this work. It is recommended to choose systems with 4 degrees of freedom and 2 actuators--systems with 3 degrees of freedom and 1 actuator may not be as interesting to study.
+
+\subsection{Metrizability of the connection}
+\todo[inline]{determine if the connection is metrizable. page 10, line 24 of mccarthy.}
 \end{document}

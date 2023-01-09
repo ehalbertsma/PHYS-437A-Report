@@ -33,6 +33,11 @@
 \usepackage{commath}
 \usepackage{physics}
 \usepackage[font=footnotesize,labelfont=bf,margin=25pt]{caption} % changes settings for caption
+\usepackage{minitoc} % allows for small table of contents at start of chapter
+
+%----- minitoc -----
+\setcounter{minitocdepth}{2}
+\dominitoc[n]
 
 % this is supposed to bring fix citations in subfiles
 \makeatletter
@@ -71,10 +76,10 @@ right=1in,bottom=1in,left=1in,top=1in,
 \renewcommand{\footrulewidth}{0.8pt}
 \renewcommand{\chaptermark}[1]{%
  \markboth{\thechapter.\ #1}{}}
-\rhead{\leftmark}
-\lhead{PHYS 437}
+\lhead{\leftmark}
+\rhead{\thepage}
 \chead{\includegraphics[width=2em]{assets/uw.png}}
-\cfoot{\thepage}
+% \cfoot{\thepage}
 
 % Comments
 \definecolor{blue}{RGB}{135, 197, 255}
@@ -101,7 +106,7 @@ right=1in,bottom=1in,left=1in,top=1in,
     \par\nobreak
     \vspace*{10\p@}
     \interlinepenalty\@M
-    {\raggedright \Huge \bfseries #1}%
+    {\raggedright \huge \bfseries #1}%
     \par\nobreak
     \hrulefill
     \par\nobreak
@@ -115,7 +120,7 @@ right=1in,bottom=1in,left=1in,top=1in,
     \par\nobreak
     \vspace*{10\p@}
     \interlinepenalty\@M
-    {\raggedright \Huge \bfseries #1}%
+    {\raggedright \huge \bfseries #1}%
     \par\nobreak
     \hrulefill
     \par\nobreak
