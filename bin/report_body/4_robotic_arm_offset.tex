@@ -2,16 +2,20 @@
 \begin{document}
 \section{Offset Robotic Arm}\label{sec:robotarmoffset} 
 This section provides the complete worked example of the methodology, illustrating the process from selection of a mechanical system all the way to dynamical reduction. 
-\todo{fix system description, add diagram}
 
-This example is adapted from \ref{sec:robotarm}  so that the actuated joint is offset from the centre of the block. This results in a coupling of the dynamics of the arm and the block--a much more interesting problem. Additionally, the actuator controlling the length of the arm is removed. This gives the system two degrees of underactuation, which is favourable for the dynamical reduction technique being explored.
+This example is adapted from \ref{sec:robotarm}, modified such that the actuated joint is offset from the centre of the block. This results in a coupling of the dynamics of the arm and the block--a much more interesting problem. Additionally, the actuator controlling the length of the arm is removed. This gives the system two degrees of underactuation, which is favourable for the dynamical reduction technique being explored.
 
 \textbf{Description} Consider a massive body which rotates around a fixed point in space. A leg extends from the body, which can rotate relative to the body and change its length.
-\missingfigure{Add diagram of robot arm here.}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{assets/robot-arm.png}
+    \caption{Offset robotic arm schematic diagram}
+    \label{fig:rob-arm}
+\end{figure}
 
 
 \begin{enumerate}[(1)]
-\item The smooth simple simple mechanical control system $(Q,\mathbb{G},F,P)$ is given by:\todo{update this}
+\item The smooth simple simple mechanical control system $(Q,\mathbb{G},F,P)$ is given by:
 \begin{itemize}
     \item \textbf{Configuration space} $Q=\ree_{>0}\cross\mathbb{S}^1\cross\mathbb{S}^1$, with coordinates $q=(r,\theta,\psi)$
     \item \textbf{Kinetic metric} $\mathbb{G}=m(\dd r\otimes\dd r + r^2\dd\theta\otimes\dd\theta)+J\dd\psi\cross\dd\psi$
@@ -55,7 +59,7 @@ Since the Lagrangian's $\theta,\psi$ dependency can be expressed as a function o
 %         \Lagr\del{\Phi(q,g),\dot q}
 %     \end{align}
 % SELECT VHCS ----------------------
-\item \todo{This section needs work}{The} next step is to choose well-defined Virtual Holonomic Constraints that respect the symmetry defined above. 
+\item {The} next step is to choose well-defined Virtual Holonomic Constraints that respect the symmetry defined above. 
 
 The set of chosen VHCs $h(q)$ (Definition \ref{thm:regularvhc}) constrain the system to a submanifold $\mathcal{C}\subset Q$, with
     \begin{align}
@@ -83,10 +87,8 @@ The set of chosen VHCs $h(q)$ (Definition \ref{thm:regularvhc}) constrain the sy
     \begin{align}
     H(q)=\pmqty{1\\0\\0},
     \end{align}
-    \todo{include citation and list Assumptions from p18 McCarthy paper}
     and their direct sum defines the fiber bundle $T\mathcal{C}=TV\oplus TH$.
     \item 
-    \todo[inline]{work in progress below this}
     The constrained dynamics are computed in two different methods. The first method involves a parametrization of the coordinates subject to the VHCs, and the second method uses Christoffel symbols.
     
     The Christoffel Symbols (Definition \ref{eq:christoffel}) of the constraint manifold $\Gammac{k}{ij}$ are computed in Matlab:

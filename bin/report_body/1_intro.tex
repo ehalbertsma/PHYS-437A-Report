@@ -6,8 +6,13 @@
 \section{Motivation}
 Modern robotic systems are designed as {underactuated} systems. These systems feature more degrees of freedom in the movement of the joints than there are actuators controlling their motions\cite{underactuated}. 
 For robots with two or more degrees of underactuation, the dynamics may become highly complex. In fact, underactuated dynamics are often not even Euler-Langrange\cite{mccarthy}.
-
-It is therefore necessary to have a suite of fast, reliable methods for analyzing and controlling these underactuated robots. One approach is called dyamical reduction, wherein complex dynamics are simplified using mathematical techniques.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{assets/bostondyn.png}
+    \caption{A Boston Dynamics four-legged robot demonstrates its ability to balance in 2021 \cite{bostondyn}}
+    \label{fig:bostondyn}
+\end{figure}
+It is therefore necessary to have a suite of fast, reliable methods for analyzing and controlling these underactuated robots. One approach is called dyamical reduction, wherein complex dynamics are simplified using mathematical techniques. Modeling a system to be with only a subset of its generalized coordinates, without compromising on the usefulness and accuracy of the model, allows for faster and more efficient computation and control.
 \section{Overview}
 This project explores the behaviour of some simple, underactuated, mechanical control systems endowed with symmetry subjected to virtual holonomic constraints (VHCs). 
 

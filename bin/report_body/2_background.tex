@@ -81,12 +81,22 @@ Let $\del{Q,\mbbg,P}$ be a smooth simple mechanical system. \begin{enumerate}[(a
 \end{boxdef}\label{def:symmetry}
 A noteworthy extension of \ref{def:lagr-invariant} above is that the Lagrangian $\Lagr(\qd,q)$ is also invariant under the action of $\Phi$. This leads to Noether's Theorem, one of the key findings of 20\textsuperscript{th} century physics.
 
-\begin{boxthm}{Noether's Theorem\cite{bullo2019geometric}%292
-}\todo{complete this}
-Let $\del{Q,\mbbg,P}$ be a smooth simple mechanical system, and let $\gamma:I\to Q$ be a solution to its equations of motion. Then
+\begin{boxthm}{Noether's Theorem (simplified) \cite{bullo2019geometric}%292
+}
+Let $\del{Q,\mbbg,P}$ be a smooth simple mechanical system, and let $\gamma:I\to Q$ be a solution to its equations of motion, and $J$ is the conserved quantity (momentum map) with respect to the symmetry. Then
 \begin{enumerate}[(a)]
-    \item 
-    \item 
+    \item if $\Phi:G\cross Q\to Q$ is a symmetry, then for all $\zeta\in g$,
+    \begin{align}
+        \dv{}{t}\langle J_\Phi(t,\gamma'(t)),\zeta\rangle
+        =
+        0.
+    \end{align}
+    \item  if $X$ is an infinitesimal symmetry, then
+    \begin{align}
+        \dv{}{t} J_X(\gamma'(t))
+        =
+        0.
+    \end{align}
 \end{enumerate}
 \end{boxthm}
 
@@ -145,7 +155,7 @@ where each variable is defined as follows:%\todo{I want to add what type of math
 \begin{enumerate}[(a)]
     \item $q$ is the generalized coordinate vector at the point $q\in Q$ of the system, and $\qd,\qdd$ are the respective first and second time derivatives of $q$.
     \item $D(q)$ (also known as $M(q)$) is the inertia matrix describing the system's mass and intertia in each coordinate direction.
-    \item $C\del{q,\qd}$ is the Coriolis matrix.\todo{explain this more}
+    \item $C\del{q,\qd}$ is the Coriolis matrix.
     \item $P\del{q}$ is a scalar function whose gradient with respect to the generalized coordinate vector $q$ describes the potential field of the system.
     \item $B$ is a $\del{\dim q }\cross\del{ \dim \tau}$ matrix, which relates the degrees of freedom of the system to the number of control inputs. For example, if the system is characterized by 4 generalized coordinates and 2 actuators, $B\in M_{4\cross 2}\del{\ree}$.
     \item $\tau$ is the vector containing the elements of $F$ (set of control inputs of the system described in Definition \ref{def:controlsystem}).
@@ -194,15 +204,15 @@ The parameters $K_P,K_D$ are the proportional and derivative controller paramete
 
 
 \section{Concepts of Differential Geometry}
-\todo[inline]{Work in progress.}
-\begin{boxdef}{Covariant Derivative}
+% \todo[inline]{Work in progress.}
+% \begin{boxdef}{Covariant Derivative}
     
-\end{boxdef}
-\begin{boxdef}{Parallel Transport}
+% \end{boxdef}
+% \begin{boxdef}{Parallel Transport}
     
-\end{boxdef}
-\begin{boxdef}{Christoffel Symbol}\label{eq:christoffel}
+% \end{boxdef}
 While the natural basis elements of $\ree^n$ are invariant throughout $\ree^n$, this is not generally the case on manifolds.
+\begin{boxdef}{Christoffel Symbol}\label{eq:christoffel}
 Christoffel symbols are real numbers that describe how the basis element of a manifold transforms at each point on the manifold. 
 
 The $(i,j,k)$\textsuperscript{th} Christoffel Symbol of the second kind is a real number $\Gamma^k_{ij}:Q\to\ree$ defined by:
@@ -213,7 +223,7 @@ Here, $D_{ij},D\inv_{ij}$ denote the $(i,j)$\textsuperscript{th} matrix elements
 \end{boxdef}
 
 The constrained dynamics have their own respective Christoffel symbols, which account for the parametrization $q=\varphi(s)$.
-\begin{boxdef}{Christoffel Symbols of the Constrained Connection}\label{eq:christoffelconstrained}\todo{not quite complete, check this}
+\begin{boxdef}{Christoffel Symbols of the Constrained Connection}\label{eq:christoffelconstrained}
 The $(i,j,k)$\textsuperscript{th} Christoffel Symbol corresponding to the constrained connection $\nablac$ is a real number $\Gammac{k}{ij}:Q\to\ree$ defined by:
 \begin{align}
    \Gammac{k}{ij}:=\sum^n_{a=1}
@@ -223,9 +233,9 @@ The $(i,j,k)$\textsuperscript{th} Christoffel Symbol corresponding to the constr
 \end{align}
 Here, $D_{ij},D\inv_{ij}$ denote the $(i,j)$\textsuperscript{th} matrix elements of the inertia matrix $D(q)$ and its inverse, respectively.
 \end{boxdef}
-\begin{boxdef}{Ehresmann connection}\label{def:ehresmann}
+% \begin{boxdef}{Ehresmann connection}\label{def:ehresmann}
     
-\end{boxdef}
+% \end{boxdef}
 
 
 \end{document}

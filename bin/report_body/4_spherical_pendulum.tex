@@ -6,8 +6,12 @@ This example was used to motivate the Noether-like theorem in McCarthy's paper. 
 \textbf{Description} 
 A point mass $m_1$ on the $xy$-plane can be actuated in the radial and tangential components $(\rho,\theta)$. Attached to $m_1$ is a rigid massless rod of fixed length $\ell$ with another point mass $m_2$ at the end. The second mass $m_2$ is on or above the $xy$-plane, and is free to move in the azimuthal and tangential components $(\phi,\psi)$.
 %Consider a massive body which rotates around a fixed point in space. A leg extends from the body, which can rotate relative to the body and change its length.
-\missingfigure{Add diagram of pendulum here.}
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/spherical-pen.png}
+    \caption{Schematic diagram of spherical pendulum system \cite[5]{mccarthy}}
+    \label{fig:sph-pen}
+\end{figure}
 
 \begin{enumerate}[(1)]
 \item The smooth simple simple mechanical control system $(Q,\mathbb{G},F,P)$ is defined by:
@@ -124,52 +128,10 @@ Take $V(q)$ as the Vertical Vector Field defined by the direction of the symmetr
     \begin{align}
     H(q)=\pmqty{1\\0\\0\\-\frac{\pi}{4}\tanh^2(\rho)+\frac{\pi}{4}},
     \end{align}
-    \todo{include citation and list Assumptions from p18 McCarthy paper}
     and their direct sum defines the fiber bundle $T\mathcal{C}=TV\oplus TH$.
     \item 
-    \todo[inline]{work in progress below this}
-    The constrained dynamics are computed in two different methods. The first method involves a parametrization of the coordinates subject to the VHCs, and the second method uses Christoffel symbols.
+    The constrained dynamics are computed using the expression with constrained Christoffel Symbols in Equation \ref{eq:constr-dyn-gammac}. 
     
     The Christoffel Symbols (Definition \ref{eq:christoffelconstrained}) of the constraint manifold $\Gammac{k}{ij}$ are computed in Matlab.
-    
-    \begin{align}
-        insert-unsimplified-gammac
-    \end{align}
-    
-    \begin{align}
-    \begin{array}{lll}
-        \Gammac{1}{11}=0-& \Gammac{1}{12}=\rho&
-        \Gammac{1}{13}=\rho\\
-        \Gammac{1}{21}=\rho&
-        \Gammac{1}{22}=-L-\rho&
-        \Gammac{1}{23}=\rho\\
-        \Gammac{1}{31}=\rho&
-        \Gammac{1}{32}=-L-\rho&
-        \Gammac{1}{33}=\rho
-    \end{array}
-    \\\begin{array}{lll}
-        \Gammac{2}{11}=0&
-        \Gammac{2}{12}=0&
-        \Gammac{2}{13}=\rho\\
-        \Gammac{2}{21}=0&
-        \Gammac{2}{22}=0&
-        \Gammac{2}{23}=\rho\\
-        \Gammac{2}{31}=\rho&
-        \Gammac{2}{32}=-L-\rho&
-        \Gammac{2}{33}=\rho
-    \end{array}
-    \\\begin{array}{lll}
-        \Gammac{3}{11}=0&
-        \Gammac{3}{12}=0&
-        \Gammac{3}{13}=\rho\\
-        \Gammac{3}{21}=0&
-        \Gammac{3}{22}=0&
-        \Gammac{3}{23}=\rho\\
-        \Gammac{3}{31}=\rho&
-        \Gammac{3}{32}=-L-\rho&
-        \Gammac{3}{33}=\rho
-    \end{array}
-    \end{align}
-     
-\end{enumerate}
+    \end{enumerate}
 \end{document}
